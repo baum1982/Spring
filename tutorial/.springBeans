@@ -10,6 +10,7 @@
 		<config>src/main/java/org/baum/app/edu/first/applicationContext.xml</config>
 		<config>src/main/java/org/baum/app/edu/aop/applicationContext.xml</config>
 		<config>src/main/java/org/baum/app/edu/life/applicationContext.xml</config>
+		<config>src/main/java/org/baum/app/edu/config/applicationContext.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

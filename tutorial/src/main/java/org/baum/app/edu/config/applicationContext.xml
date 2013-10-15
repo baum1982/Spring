@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="abstractBean" abstract="true" class="org.baum.app.edu.config.ConfigMain.ObjectBean"></bean>
+	
+	<bean id="objA" parent="abstractBean"></bean>
+	<bean id="objB" parent="abstractBean"></bean>
+	<bean id="objC" parent="abstractBean"></bean>
+	<bean id="objD" parent="abstractBean"></bean>
+	<bean id="objE" parent="abstractBean"></bean>
+	
+	
+	<bean class="org.baum.app.edu.config.ConfigMain.CollectionBean">
+		<property name="dataMap">
+			<util:map>
+				<entry key="key1" value="1" value-type="java.lang.Integer"></entry>
+				<entry key="key2" value="2" value-type="java.lang.Integer"></entry>
+				<entry key="key3" value="3" value-type="java.lang.Integer"></entry>
+			</util:map>
+		</property>
+		
+		<property name="dataObjList">
+			<util:list>
+				<ref bean="objA"/>
+				<ref bean="objB"/>
+				<ref bean="objC"/>
+			</util:list>
+		</property>
+	</bean>
+
+</beans>

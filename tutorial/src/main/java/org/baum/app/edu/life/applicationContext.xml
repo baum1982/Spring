@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<bean id="lifeName" class="java.lang.String">
+		<constructor-arg value="생성주기"></constructor-arg>
+	</bean>
+
+	<!-- lazy-init="true" 요청하는 시점에 Bean을 생성 --> 
+	<!-- 
+	#Scope
+		prototype: Spring 에서 
+		
+	
+	
+	 -->
+	<bean id="life" class="org.baum.app.edu.life.LifeMain.LifeBean" 
+		lazy-init="true" init-method="configInit" destroy-method="configDestory"
+		scope="prototype"></bean>
+		
+	<bean class="org.baum.app.edu.life.ScopeMain.SingetonBean"></bean>
+	<bean class="org.baum.app.edu.life.ScopeMain.PrototypeBean" scope="prototype"></bean>
+	
+	<bean class="org.baum.app.edu.life.ScopeMain.ChildSingetonBean"></bean>
+	<bean class="org.baum.app.edu.life.ScopeMain.ChildPrototypeBean" scope="prototype"></bean>
+	
+	
+	<context:annotation-config></context:annotation-config>
+</beans>

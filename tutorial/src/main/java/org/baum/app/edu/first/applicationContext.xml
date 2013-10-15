@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+
+	<bean id="F1"
+		class="org.baum.app.edu.first.FirstMain$FirstBean">
+		<property name="name" value="재환"></property>
+	</bean>
+	<bean id="F2"
+		class="org.baum.app.edu.first.FirstMain$FirstBean">
+		<property name="name" value="Julie"></property>
+	</bean>
+	
+			
+	<bean id="SecondBean"
+		class="org.baum.app.edu.first.FirstMain$SecondBean">
+		<!-- property는 bean의 필드값을 정의 -->
+		<property name="firstBean" ref="F2">
+			
+		</property>
+	</bean>
+	
+	
+	<context:annotation-config></context:annotation-config>
+</beans>

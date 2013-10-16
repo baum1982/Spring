@@ -15,23 +15,26 @@
 	<bean id="objD" parent="abstractBean"></bean>
 	<bean id="objE" parent="abstractBean"></bean>
 	
+	<beans profile="REAL">
+		<bean class="org.baum.app.edu.config.ConfigMain.CollectionBean">
+			<property name="dataMap">
+				<util:map>
+					<entry key="key1" value="1" value-type="java.lang.Integer"></entry>
+					<entry key="key2" value="2" value-type="java.lang.Integer"></entry>
+					<entry key="key3" value="3" value-type="java.lang.Integer"></entry>
+				</util:map>
+			</property>
+			
+			<property name="dataObjList">
+				<util:list>
+					<ref bean="objA"/>
+					<ref bean="objB"/>
+					<ref bean="objC"/>
+				</util:list>
+			</property>
+		</bean>
+	</beans>
 	
-	<bean class="org.baum.app.edu.config.ConfigMain.CollectionBean">
-		<property name="dataMap">
-			<util:map>
-				<entry key="key1" value="1" value-type="java.lang.Integer"></entry>
-				<entry key="key2" value="2" value-type="java.lang.Integer"></entry>
-				<entry key="key3" value="3" value-type="java.lang.Integer"></entry>
-			</util:map>
-		</property>
-		
-		<property name="dataObjList">
-			<util:list>
-				<ref bean="objA"/>
-				<ref bean="objB"/>
-				<ref bean="objC"/>
-			</util:list>
-		</property>
-	</bean>
+	
 
 </beans>

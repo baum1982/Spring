@@ -51,6 +51,8 @@ public class ConfigMain {
 	
 	
 	public static void main(String[] args) {
+		System.setProperty("spring.profiles.active", "REAL");
+		
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/config/applicationContext.xml");
 		CollectionBean bean = 
 				context.getBean(CollectionBean.class);

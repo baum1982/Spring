@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<!-- 	패키지 아래의 @Component, @Repository, @Service, and @Controller 를 컴포넌트에 로
+			하위 패키지 전부 로딩
+			복수의 패키지는 콤마(,)로 구분
+	 -->
+	<context:component-scan base-package="org.baum.app.edu.config.common">
+	
+	<!-- 
+		특정 어노테이션만 제
+		<context:exclude-filter type="annotation" expression=""/>
+		
+		특정 어노테이션만 포
+		<context:include-filter type="annotation" expression=""/>
+	 -->
+		
+	</context:component-scan>
+</beans>

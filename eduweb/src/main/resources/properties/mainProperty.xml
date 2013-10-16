@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- <test>
+		<value>
+			Hello  World
+		</value>
+	</test> -->
+	
+	<datasource>
+		<classname>com.mysql.jdbc.Drive</classname>
+		<url>jdbc:mysql://10.10.75.131:3306/HIVE</url>
+		<username>HIVE</username>
+		<password>HIVE</password>
+	</datasource>
+	
+	
+</config>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:property-placeholder 
+		local-override="true" 
+		location="classpath:org/baum/app/edu/property/placeholder.properties"
+		properties-ref="mainProp"/>
+
+	<bean class="org.baum.app.edu.property.PropertyUsingBean">
+		<property name="placeHolderVal" value="${이름}"></property>
+		<property name="sysVal" value="${System.Prop}"></property>
+		<property name="utilPropVal" value="#{myProp['TY']}"></property>
+		
+	</bean>
+	
+	<bean id="mainProp" 
+		class="org.springmodules.commons.configuration.CommonsConfigurationFactoryBean">
+		<property name="configurations">
+			<list><!-- 프로퍼티 파일 여러개 가능 -->
+				<bean class="org.apache.commons.configuration.XMLConfiguration">
+					<constructor-arg name="url" type="java.net.URL">
+						<value>classpath:org/baum/app/edu/property/property.xml</value>
+					</constructor-arg>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
+	
+	<util:properties id="myProp" location="classpath:org/baum/app/edu/property/util.properties"></util:properties>
+	
+	
+	
+	
+	<context:annotation-config></context:annotation-config>
+</beans>

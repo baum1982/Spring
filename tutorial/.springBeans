@@ -14,6 +14,7 @@
 		<config>src/main/java/org/baum/app/edu/config/subconfig/common-context.xml</config>
 		<config>src/main/java/org/baum/app/edu/config/subconfig/datasource-context.xml</config>
 		<config>src/main/java/org/baum/app/edu/config/parent-context.xml</config>
+		<config>src/main/java/org/baum/app/edu/config/childcontext/child-context.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

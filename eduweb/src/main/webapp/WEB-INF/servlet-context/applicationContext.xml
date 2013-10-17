@@ -3,10 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+	
 
 	<context:component-scan base-package="org.baum.app.edu.eduweb"></context:component-scan>
 	<context:annotation-config></context:annotation-config>
@@ -20,18 +27,76 @@
 	
 	
 	
-	
+	<!-- Bean을 찾아 url 맵핑 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order" value="2"></property>
+		<property name="order" value="1"></property>
 	</bean>
 	
+	
+	<!-- Bean을 찾아 url jsp등 파일 명으로 매핑 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"></property>
 		<property name="suffix" value=".jsp"></property>
-		<property name="order" value="1"></property>
+		<property name="order" value="3"></property>
 		
+	</bean>
+	
+	<!-- json 처리용 -->
+	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"></mvc:annotation-driven>
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="mediaTypes">
+			<util:map>
+				<entry key="json" value="application/json"></entry>
+				<entry key="xml" value="application/xml"></entry>
+			</util:map>
+		</property>
+		<property name="defaultContentType" value="application/json"></property>
+	</bean>
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager" ref="contentNegotiationManager">
+		<!-- 어떤 미디어 타입을 처리 할 것이냐? -->
+			
+		</property>
+		
+		<property name="defaultViews">
+			<util:list>
+				<!-- json 처리 -->
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+				
+				<!-- xml 처리 -->
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<property name="marshaller">
+						<bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+							<property name="packagesToScan" value="org.baum.app.edu.eduweb"></property>
+						</bean>
+					</property>
+				</bean>
+			</util:list>
+		</property>
+		<property name="order" value="2"></property>
 	</bean>
 	
 	
 	
+	<tx:advice id="tynSysTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* org.baum.apps..*Controller.*(..))" id="requiredTX"/>
+		<aop:advisor advice-ref="tynSysTxAdvice" pointcut-ref="requiredTX"/>
+	</aop:config>
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="error"></property>
+		<!-- <property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.dao.DuplicateKeyException"></prop>
+			</props>
+		</property> -->
+	</bean>
+
+
+
 </beans>

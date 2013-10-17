@@ -7,10 +7,10 @@
 	</test> -->
 	
 	<datasource>
-		<classname>com.mysql.jdbc.Drive</classname>
+		<classname>com.mysql.jdbc.Driver</classname>
 		<url>jdbc:mysql://10.10.75.131:3306/HIVE</url>
-		<username>HIVE</username>
-		<password>HIVE</password>
+		<username>hive</username>
+		<password>hive</password>
 	</datasource>
 	
 	

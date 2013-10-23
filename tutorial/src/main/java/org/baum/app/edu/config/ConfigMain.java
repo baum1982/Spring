@@ -13,19 +13,14 @@ public class ConfigMain {
 	public static class ObjectBean implements BeanNameAware{
 		private String name;
 		
-		
-		
 		@Override
 		public String toString() {
 			return "ObjectBean [name=" +name+ "]" ;
 		}
 
-
-
 		@Override
 		public void setBeanName(String name) {
 			this.name = name;
-			
 		}
 	}
 	
@@ -48,21 +43,17 @@ public class ConfigMain {
 		}
 	}
 	
-	
-	
 	public static void main(String[] args) {
 		System.setProperty("spring.profiles.active", "REAL");
-		
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/config/applicationContext.xml");
+		AbstractApplicationContext context = 
+				new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/config/applicationContext.xml");
 		CollectionBean bean = 
 				context.getBean(CollectionBean.class);
 		
 		for (ObjectBean item : bean.getDataObjList()) {
 			System.out.println(item.toString());
 		}
-
 		System.out.println("-----------------------------------------");
-		
 		for (Entry<String, Integer> entry : bean.getDataMap().entrySet()) {
 			System.out.println(entry.getKey() + " : " + entry.getValue());
 		}

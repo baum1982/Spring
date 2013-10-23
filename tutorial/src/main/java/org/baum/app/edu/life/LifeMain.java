@@ -30,7 +30,7 @@ public class LifeMain {
 		
 		
 		public LifeBean() {
-			System.out.println("Bean Construct" + name);
+			System.out.println("Bean Construct " + name);
 		}
 		
 		@PostConstruct
@@ -65,8 +65,16 @@ public class LifeMain {
 	public static void main(String[] args) {
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/life/applicationContext.xml");
 		
-		context.registerShutdownHook();
-		context.getBean(LifeBean.class);
+		context.registerShutdownHook(); // 종료될 때 destory  제대로 한라는 의미
+		LifeBean bean = context.getBean(LifeBean.class); 
+		
+		System.out.println("#########################");
+		bean = context.getBean(LifeBean.class);
+		
+		System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
+		context.refresh();
+		bean = context.getBean(LifeBean.class);
+		System.out.println("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 		context.close();
 
 	}

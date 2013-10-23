@@ -10,7 +10,20 @@
 	<bean class="org.baum.app.edu.aop.AOPMain.BizBean"></bean>
 	<bean class="org.baum.app.edu.aop.AOPMain.OpMonitor"></bean>
 
-	<aop:aspectj-autoproxy>
+
+	<!-- 
+		일종의 선후행 처리, Pointcut
 		
-	</aop:aspectj-autoproxy>
+		AOP(Aspect Oriented Programming) 을 정의한 클래스에 @Aspect 어노테이션을 추가하고
+		메소드에는 @After-선행, @Before-후행 , @Around-함수감싸기(?) 를 추가한다.
+		
+		EXP는 AOP를 적용할 대상 메소들을 표현하는 AOP 표현식이다.
+		http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte:fdl:aop:aspectj
+		
+		Nanespaces에 aop를 추가하고 추가된 aop 탭에서 aspectj-autoproxy를 추가해야
+		aop 어노테이션을 추가할 수 있다. 
+	
+	 -->
+
+	<aop:aspectj-autoproxy/>
 </beans>

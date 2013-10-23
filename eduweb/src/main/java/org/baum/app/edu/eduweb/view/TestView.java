@@ -30,7 +30,7 @@ public class TestView extends AbstractView {
 		ServletOutputStream outputStream = response.getOutputStream();
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(outputStream));
 	
-		System.out.println("들어왔");
+		System.out.println("들어왔다");
 		bw.write("Test View Result\n");
 		
 		for (Entry<String, Object> entry : model.entrySet()) {

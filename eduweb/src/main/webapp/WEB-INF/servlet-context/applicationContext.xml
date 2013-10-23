@@ -13,19 +13,14 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	
-
+	<!--  -->
 	<context:component-scan base-package="org.baum.app.edu.eduweb"></context:component-scan>
+	
 	<context:annotation-config></context:annotation-config>
-	
-	
-	<mvc:annotation-driven></mvc:annotation-driven>
-	
+
+	<mvc:annotation-driven/>
 	
 	<mvc:default-servlet-handler />
-	
-	
-	
 	
 	<!-- Bean을 찾아 url 맵핑 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -76,8 +71,6 @@
 		<property name="order" value="2"></property>
 	</bean>
 	
-	
-	
 	<tx:advice id="tynSysTxAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get" propagation="REQUIRED" read-only="true"/>
@@ -96,7 +89,5 @@
 			</props>
 		</property> -->
 	</bean>
-
-
 
 </beans>

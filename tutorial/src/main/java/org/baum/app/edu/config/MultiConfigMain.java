@@ -24,10 +24,9 @@ public class MultiConfigMain {
 		fx.setParent(context);
 		fx.refresh();
 		
-		
 		// 자기거만 보여준다.
 		for (String str : fx.getBeanDefinitionNames()) {
-			if(context.isSingleton(str)){
+			if(fx.isSingleton(str)){
 				System.out.println("FX Single: " + str);
 			} else {
 				System.out.println("FX Not Single: " + str);

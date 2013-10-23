@@ -26,6 +26,7 @@ public class AOPMain {
 		
 		
 	}
+	
 	@Aspect
 	public static class OpMonitor{
 		// 스프링 AOP 표현식 참조
@@ -46,6 +47,8 @@ public class AOPMain {
 			System.out.println("AROUND Before");
 			
 			Object[] args = point.getArgs();
+			
+			
 			
 			List<Object> asList =  Arrays.asList(args);
 			
@@ -69,17 +72,18 @@ public class AOPMain {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/aop/applicationContext.xml");
 		
-		for (String name : context.getBeanDefinitionNames()) {
-			System.out.println(name);// 아이디나 클래스명
-			System.out.println(context.getBean(name));
-			
-		}
+		ApplicationContext context = 
+				new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/aop/applicationContext.xml");
+		
+//		for (String name : context.getBeanDefinitionNames()) {
+//			System.out.println(name);// 아이디나 클래스명
+//			System.out.println(context.getBean(name));
+//			
+//		}
 		
 		BizBean bean = context.getBean(BizBean.class);
-		bean.resisterUser("재환");
+//		bean.resisterUser("재환");
 		bean.banUser("재환");
 		bean.toString();
 	}

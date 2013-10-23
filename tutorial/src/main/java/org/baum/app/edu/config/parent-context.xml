@@ -11,11 +11,4 @@
 	<import resource="file:/Users/baum/git/Spring/tutorial/src/main/java/org/baum/app/edu/config/subconfig/common-context.xml"/>
 	<import resource="file:/Users/baum/git/Spring/tutorial/src/main/java/org/baum/app/edu/config/subconfig/datasource-context.xml"/>
 	 -->
-	
-	
-
-
-
-
-
 </beans>

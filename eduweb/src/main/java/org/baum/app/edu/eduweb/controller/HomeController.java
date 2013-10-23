@@ -15,6 +15,6 @@ public class HomeController {
 		
 		// 이 값을 기준으로 /WEB-INF/servlet-context/applicationContext.xml 에 정의된
 		// suffix, prefix가 적용되어 페이지 이동 한다.
-		return "home";
+		return "home";// WEB-INF/view/home.jsp
 	}
 }

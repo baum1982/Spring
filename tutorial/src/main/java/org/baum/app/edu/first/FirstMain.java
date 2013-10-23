@@ -4,8 +4,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FirstMain {
-
-	
 	
 	public static class FirstBean {
 		private String name;
@@ -20,7 +18,6 @@ public class FirstMain {
 		
 		@Override
 		public String toString() {
-			// TODO Auto-generated method stub
 			return "Hello " + name;
 		}
 	}
@@ -54,7 +51,6 @@ public class FirstMain {
 		for (String name : context.getBeanDefinitionNames()) {
 			System.out.println(name);// 아이디나 클래스명
 			System.out.println(context.getBean(name));
-			
 		}
 	
 	}

@@ -9,11 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DIMain {
-
-	
 	
 	public static class FirstBean {
-		
 		String name;
 		
 		public String getName() {
@@ -26,7 +23,6 @@ public class DIMain {
 		
 		@Override
 		public String toString() {
-			// TODO Auto-generated method stub
 			return "Hello " + name;
 		}
 	}
@@ -70,13 +66,16 @@ public class DIMain {
 	public static class Replacer implements MethodReplacer {
 
 		/**
-		 * @param arg0 오브젝트
-		 * @param arg1 메소드
-		 * @param arg2 파라미터
+		 * @param object 오브젝트
+		 * @param method 메소드
+		 * @param objects 파라미터
 		 */
 		@Override
-		public Object reimplement(Object arg0, Method arg1, Object[] arg2)
+		public Object reimplement(Object object, Method method, Object[] objects)
 				throws Throwable {
+			
+			System.out.println(method.getName());
+//			method.
 			
 			return "건백";
 		}
@@ -88,22 +87,18 @@ public class DIMain {
 		// Classpath안의 컨텍스트 정보를 읽어 활용한다.
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:org/baum/app/edu/di/applicationContext.xml");
 	
-		for (String name : context.getBeanDefinitionNames()) {
-			System.out.println(name);// 아이디나 클래스명
-			System.out.println(context.getBean(name));
-			
-		}
-	
+//		for (String name : context.getBeanDefinitionNames()) {
+//			System.out.println(name);// 아이디나 클래스명
+//			System.out.println(context.getBean(name));
+//			
+//		}
 		
-		
-		//look-up  id, name, type  세가지 방
+		//look-up  id, name, type  세가지 방법
 		SecondBean bean = context.getBean(SecondBean.class);
 		System.out.println(bean);
 		System.out.println(bean.getMyFirst());
 		
 		System.out.println(bean.getReplaceMethod("준태"));
-		
-		
 		
 		
 	}

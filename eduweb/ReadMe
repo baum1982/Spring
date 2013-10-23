@@ -1,0 +1,10 @@
+<순서>
+
+1. 사전 설정
+	(1) "/eduweb/src/main/webapp/WEB-INF" 아래에  root-context, servlet-context 두 폴더를 생성
+	(2) 위 두 폴더에  'Spring Bean Configuration File'을 생성한다.
+	(3) 생성한 파일을 "/eduweb/src/main/webapp/WEB-INF/web.xml"에 정의, (주1,주2)
+	
+2. org.baum.app.edu.eduweb.controller.HomeController
+	http://localhost:8080/eduweb
+	http://localhost:8080/eduweb/index.html

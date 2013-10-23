@@ -32,7 +32,7 @@ if(temp!=null){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>/eduweb/src/main/webapp/WEB-INF/view/user.jsp</title>
 </head>
 <body>
 <h2>Hello User!</h2>

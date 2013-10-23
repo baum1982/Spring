@@ -12,12 +12,12 @@ public class MultiConfigMain2 {
 						new String[]{"classpath:org/baum/app/edu/config/subconfig/*-context.xml", 
 								"classpath:org/baum/app/edu/config/childcontext/*-context.xml"});
 		
-//		ClassPathXmlApplicationContext childContext =
-//				new ClassPathXmlApplicationContext();
-//		
-//		childContext.setParent(context);
-//		childContext.setConfigLocation("classpath:org/baum/app/edu/config/childcontext/child-context.xml");
-//		childContext.refresh();
+		ClassPathXmlApplicationContext childContext =
+				new ClassPathXmlApplicationContext();
+		
+		childContext.setParent(context);
+		childContext.setConfigLocation("classpath:org/baum/app/edu/config/childcontext/child-context.xml");
+		childContext.refresh();
 		
 		for (String name : context.getBeanDefinitionNames()) {
 			System.out.println(name);

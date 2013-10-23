@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>/eduweb/src/main/webapp/WEB-INF/view/error.jsp</title>
 </head>
 <body>
-<h1>Error~!</h1>
+<h1>Error.jsp</h1>
 </body>
 </html>

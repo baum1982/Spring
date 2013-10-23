@@ -8,20 +8,18 @@
 
 	<bean id="F1"
 		class="org.baum.app.edu.first.FirstMain$FirstBean">
-		<property name="name" value="재환"></property>
+		<property name="name" value="재환"/><!-- setName 함수에 '재환' 이라는 값으로 설정 -->
 	</bean>
 	<bean id="F2"
 		class="org.baum.app.edu.first.FirstMain$FirstBean">
-		<property name="name" value="Julie"></property>
+		<property name="name" value="Julie"/>
 	</bean>
 	
 			
 	<bean id="SecondBean"
 		class="org.baum.app.edu.first.FirstMain$SecondBean">
 		<!-- property는 bean의 필드값을 정의 -->
-		<property name="firstBean" ref="F2">
-			
-		</property>
+		<property name="firstBean" ref="F2" /><!-- setFirstBean 함수에 F2인 Bean 으로 설정 -->
 	</bean>
 	
 	

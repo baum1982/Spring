@@ -7,18 +7,6 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<context:property-placeholder 
-		local-override="true" 
-		location="classpath:org/baum/app/edu/property/placeholder.properties"
-		properties-ref="mainProp"/>
-
-	<bean class="org.baum.app.edu.property.PropertyUsingBean">
-		<property name="placeHolderVal" value="${이름}"></property>
-		<property name="sysVal" value="${System.Prop}"></property>
-		<property name="utilPropVal" value="#{myProp['TY']}"></property>
-		
-	</bean>
-	
 	<bean id="mainProp" 
 		class="org.springmodules.commons.configuration.CommonsConfigurationFactoryBean">
 		<property name="configurations">
@@ -31,6 +19,19 @@
 			</list>
 		</property>
 	</bean>
+
+	<context:property-placeholder 
+		local-override="true" 
+		location="classpath:org/baum/app/edu/property/placeholder.properties"
+		properties-ref="mainProp"/>
+
+	<bean class="org.baum.app.edu.property.PropertyUsingBean">
+		<property name="placeHolderVal" value="${이름}"></property>
+		<property name="sysVal" value="${System.Prop}"></property>
+		<property name="utilPropVal" value="#{myProp['TY']}"></property>
+	</bean>
+	
+	
 	
 	
 	

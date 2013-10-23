@@ -19,7 +19,18 @@
 			
 	<bean id="SecondBean"
 		class="org.baum.app.edu.di.DIMain$SecondBean">
+		<!-- <property name="firstBean" ref="F2"/> 대신  
+			@Autowired, @Qualifier("F2") 어노테이션으로 대체 할 수 있다.
+			
+			어노테이션을 사용하기 위해서는 Namespace 탭에서 contex를 추가 하고,
+			추가된 context 탭에서 annotation-config를 추가 해야 한다.
+		-->
+		
+		<!-- getMyFirst 실행 시 리턴값을 기존 값 무시하고 F1에 정의된값으로 리턴한 -->
 		<lookup-method name="getMyFirst" bean="F1"/>
+		
+		
+		<!-- getReplaceMethod 실행 시  methodReplacer 에 정의된 methodReplacer 함수가 대신 실행-->
 		<replaced-method name="getReplaceMethod" replacer="methodReplacer"></replaced-method>
 	</bean>
 	
